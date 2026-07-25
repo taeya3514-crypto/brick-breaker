@@ -371,20 +371,20 @@
         @media (max-width: 700px) {
             body {
                 padding: 8px;
-                justify-content: flex-start;
-                overflow-y: auto;
-                overflow-x: hidden;
-                height: auto;
+                justify-content: center;
+                overflow: hidden;
+                height: 100vh;
             }
             .game-container { padding: 12px 10px; }
             .hud-value { font-size: 1.1rem; }
 
             /* 캔버스가 가로형(640x400)이라 세로 화면에서 폭에 맞추면 높이가 매우 짧아짐(폭 380px면 약 237px) —
-               시작/일시정지/종료 오버레이 글자·버튼이 그 안에 다 안 들어가서 시작 버튼이 잘리던 문제 수정 */
+               시작/일시정지/종료 오버레이 글자·버튼이 그 안에 다 안 들어가서 시작 버튼이 잘리던 문제 수정.
+               위 텍스트/버튼 축소로 이제 내용이 짧은 높이 안에 다 들어가므로, 스크롤은 다시 막고 중앙정렬로 복귀(2026-07-25 태야 요청) */
             .overlay {
                 padding: 10px;
-                overflow-y: auto;
-                justify-content: flex-start;
+                overflow: hidden;
+                justify-content: center;
             }
             .overlay h2 {
                 font-size: 0.95rem;
