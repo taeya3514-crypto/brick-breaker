@@ -2,7 +2,6 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -153,16 +152,6 @@
         canvas {
             background: #05060b;
             display: block;
-            width: 100%;
-            max-width: 640px;
-            height: auto;
-        }
-
-        /* 모바일: 여백을 줄여서 게임판이 화면을 최대한 채우도록 */
-        @media (max-width: 700px) {
-            body { padding: 8px; }
-            .game-container { padding: 12px 10px; }
-            .hud-value { font-size: 1.1rem; }
         }
 
         /* 화면 오버레이 레이어 (모달) */
@@ -1196,7 +1185,7 @@
     document.addEventListener("mousemove", (e) => {
         if (!isPlaying || isPaused) return;
         const rect = canvas.getBoundingClientRect();
-        const relativeX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        const relativeX = e.clientX - rect.left;
         if (relativeX > 0 && relativeX < canvas.width) {
             paddleX = relativeX - paddleWidth / 2;
             keepPaddleInBounds();
@@ -1221,7 +1210,7 @@
         // 터치 지점으로 즉시 이동
         const rect = canvas.getBoundingClientRect();
         const touch = e.touches[0];
-        const relativeX = (touch.clientX - rect.left) * (canvas.width / rect.width);
+        const relativeX = touch.clientX - rect.left;
         if (relativeX > 0 && relativeX < canvas.width) {
             paddleX = relativeX - paddleWidth / 2;
             keepPaddleInBounds();
@@ -1233,7 +1222,7 @@
         e.preventDefault();
         const rect = canvas.getBoundingClientRect();
         const touch = e.touches[0];
-        const relativeX = (touch.clientX - rect.left) * (canvas.width / rect.width);
+        const relativeX = touch.clientX - rect.left;
         if (relativeX > 0 && relativeX < canvas.width) {
             paddleX = relativeX - paddleWidth / 2;
             keepPaddleInBounds();
