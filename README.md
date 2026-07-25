@@ -43,3 +43,29 @@ cd C:\Users\DAEWOO\Projects\brick-breaker
 python -m http.server 8080
 ```
 웹 브라우저로 **[http://localhost:8080](http://localhost:8080)**에 접속하여 플레이하세요.
+
+---
+
+## 4. 실제 배포(업그레이드) 방법 — 2026-07-25 신설
+
+이 게임은 **GitHub Pages**에 공개 배포되어 있다. localhost는 이 컴퓨터에서만 보이지만, 아래 공개 주소는 누구나 접속 가능하다.
+
+- **공개 플레이 주소**: https://taeya3514-crypto.github.io/brick-breaker/
+- **GitHub 저장소**: https://github.com/taeya3514-crypto/brick-breaker (계정: taeya3514-crypto)
+- **공사일보(협력업체용) 바로가기에도 링크 등록됨** (2026-07-25, "테스트버전" 배지)
+
+### 업그레이드(수정사항 반영) 절차
+
+`index.html`(또는 다른 파일)을 수정한 뒤, **아래 3줄이면 끝**이다. GAS 웹앱처럼 별도 `clasp deploy` 개념이 없다 — git push가 곧 배포다.
+
+```bash
+cd C:\Users\DAEWOO\Projects\brick-breaker
+git add -A && git commit -m "수정 내용 요약"
+git push
+```
+
+- push 후 GitHub이 자동으로 다시 빌드하며, 보통 **1~2분 안에** 공개 주소에 반영된다.
+- `gh api repos/taeya3514-crypto/brick-breaker/pages/builds/latest`로 빌드 상태(`"status":"built"`) 확인 가능.
+- 별도의 배포 승인·버전 배포ID 관리 절차 없음(GAS 프로젝트들과 다른 점).
+
+**Why:** 태야님이 "루나가 만든 이 게임을 앞으로 업그레이드할 때 어떻게 해야 하는지 모두가 알 수 있게 해달라"고 요청(2026-07-25) — 로컬에서만 열리던 걸 GitHub Pages로 처음 공개 배포하면서 이 절차를 신설.
