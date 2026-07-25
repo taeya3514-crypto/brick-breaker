@@ -158,49 +158,6 @@
             height: auto;
         }
 
-        /* 모바일: 여백을 줄여서 게임판이 화면을 최대한 채우도록 */
-        @media (max-width: 700px) {
-            body {
-                padding: 8px;
-                justify-content: flex-start;
-                overflow-y: auto;
-                overflow-x: hidden;
-                height: auto;
-            }
-            .game-container { padding: 12px 10px; }
-            .hud-value { font-size: 1.1rem; }
-
-            /* 캔버스가 가로형(640x400)이라 세로 화면에서 폭에 맞추면 높이가 매우 짧아짐(폭 380px면 약 237px) —
-               시작/일시정지/종료 오버레이 글자·버튼이 그 안에 다 안 들어가서 시작 버튼이 잘리던 문제 수정 */
-            .overlay {
-                padding: 10px;
-                overflow-y: auto;
-                justify-content: flex-start;
-            }
-            .overlay h2 {
-                font-size: 0.95rem;
-                margin-top: 2px;
-                margin-bottom: 4px;
-                letter-spacing: 1px;
-            }
-            .overlay p {
-                font-size: 0.62rem;
-                margin-bottom: 6px;
-                line-height: 1.25;
-            }
-            .overlay div[style*="gap"] {
-                gap: 6px !important;
-            }
-            .btn {
-                font-size: 0.66rem;
-                padding: 5px 10px;
-            }
-            .controls-guide {
-                margin-top: 4px;
-                font-size: 0.6rem;
-            }
-        }
-
         /* 화면 오버레이 레이어 (모달) */
         .overlay {
             position: absolute;
@@ -405,6 +362,52 @@
         .name-input:focus {
             border-color: var(--neon-green);
             box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        }
+
+        /* 모바일 반응형 — 반드시 <style> 맨 끝에 위치해야 함.
+           동일 선택자(.overlay h2 등)가 위에 이미 정의돼 있어서, 이 블록이 앞에 있으면
+           media query 조건과 무관하게 "소스 순서상 나중" 규칙(위의 기본값)이 이겨버림 —
+           실제로 이 버그 때문에 모바일 축소가 하루 종일 반영 안 되고 있었음(2026-07-25). */
+        @media (max-width: 700px) {
+            body {
+                padding: 8px;
+                justify-content: flex-start;
+                overflow-y: auto;
+                overflow-x: hidden;
+                height: auto;
+            }
+            .game-container { padding: 12px 10px; }
+            .hud-value { font-size: 1.1rem; }
+
+            /* 캔버스가 가로형(640x400)이라 세로 화면에서 폭에 맞추면 높이가 매우 짧아짐(폭 380px면 약 237px) —
+               시작/일시정지/종료 오버레이 글자·버튼이 그 안에 다 안 들어가서 시작 버튼이 잘리던 문제 수정 */
+            .overlay {
+                padding: 10px;
+                overflow-y: auto;
+                justify-content: flex-start;
+            }
+            .overlay h2 {
+                font-size: 0.95rem;
+                margin-top: 2px;
+                margin-bottom: 4px;
+                letter-spacing: 1px;
+            }
+            .overlay p {
+                font-size: 0.62rem;
+                margin-bottom: 6px;
+                line-height: 1.25;
+            }
+            .overlay div[style*="gap"] {
+                gap: 6px !important;
+            }
+            .btn {
+                font-size: 0.66rem;
+                padding: 5px 10px;
+            }
+            .controls-guide {
+                margin-top: 4px;
+                font-size: 0.6rem;
+            }
         }
     </style>
 </head>
