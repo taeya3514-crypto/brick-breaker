@@ -805,7 +805,7 @@
 
     // 화면 흔들림 효과
     let shakeIntensity = 0;
-    let shakeDecay = 0.8;
+    let shakeDecay = 0.88;
 
     // 입자(파티클) 효과 관리 배열
     let particles = [];
@@ -1535,7 +1535,7 @@
                         spawnLaserSparks(b.x, b.y);
                     }
 
-                    startShake(1); // 피격 흔들림
+                    startShake(2.5); // 피격 흔들림
                     updateHUD();
                     break;
                 }
@@ -1600,7 +1600,7 @@
                     ball.dy = -ballSpeed * Math.cos(reflectionAngle);
 
                     sound.playPaddleHit();
-                    startShake(0.8); // 가벼운 패들 타격 진동
+                    startShake(2.5); // 가벼운 패들 타격 진동
                 } else if (ball.y - ball.radius > canvas.height) {
                     // 공 탈락
                     balls.splice(i, 1);
@@ -1633,7 +1633,7 @@
                         }
                     }
                     
-                    startShake(1.5); // 충격 진동 발생
+                    startShake(5); // 충격 진동 발생
                     updateHUD();
                     break; // 중복 충돌 스킵
                 }
